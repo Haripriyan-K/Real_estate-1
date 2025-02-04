@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Gallery with Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-bar {
+            margin-top: 20px;
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px;
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        .gallery .card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card .details {
+            padding: 15px;
+        }
+
+        .card .details h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .card .details p {
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>House Gallery</h1>
+
+    <!-- Search Bar -->
+    <input type="text" id="searchBar" class="search-bar" placeholder="Search houses by title..." oninput="filterImages()">
+
+    <!-- House Image Gallery -->
+    <div class="gallery" id="gallery">
+        <div class="card" data-title="Modern House">
+            <img src="https://via.placeholder.com/250" alt="Modern House">
+            <div class="details">
+                <h3>Modern House</h3>
+                <p>A beautiful modern house with a large garden.</p>
+            </div>
+        </div>
+        <div class="card" data-title="Luxury Villa">
+            <img src="https://via.placeholder.com/250" alt="Luxury Villa">
+            <div class="details">
+                <h3>Luxury Villa</h3>
+                <p>An amazing luxury villa with a swimming pool.</p>
+            </div>
+        </div>
+        <div class="card" data-title="Country Cottage">
+            <img src="https://via.placeholder.com/250" alt="Country Cottage">
+            <div class="details">
+                <h3>Country Cottage</h3>
+                <p>A cozy cottage in the countryside with a beautiful view.</p>
+            </div>
+        </div>
+        <div class="card" data-title="Beach House">
+            <img src="https://via.placeholder.com/250" alt="Beach House">
+            <div class="details">
+                <h3>Beach House</h3>
+                <p>A beachfront house with stunning ocean views.</p>
+            </div>
+        </div>
+        <div class="card" data-title="Urban Apartment">
+            <img src="https://via.placeholder.com/250" alt="Urban Apartment">
+            <div class="details">
+                <h3>Urban Apartment</h3>
+                <p>A stylish apartment in the heart of the city.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for search functionality
+        function filterImages() {
+            const searchQuery = document.getElementById('searchBar').value.toLowerCase();
+            const cards = document.querySelectorAll('.gallery .card');
+
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(searchQuery)) {
+                    card.style.display = 'block'; // Show the card
+                } else {
+                    card.style.display = 'none'; // Hide the card
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
